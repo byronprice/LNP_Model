@@ -15,10 +15,11 @@ function [K,alpha,logLike] = FitLNP(Y,X,R)
 %           controls the shape of the response once the data has been
 %           projected down using the linear mapping from the receptive field
 %           (K'*X')
+%         logLike - value of objective function at optimum (log likelihood)
 %
 %Created: 2020/09/24
 %  Byron Price
-%Updated: 2020/09/24
+%Updated: 2020/09/29
 % By: Byron Price
 
 % initialize params
