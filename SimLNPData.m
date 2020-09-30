@@ -6,9 +6,9 @@ R = 2;
 
 gaborIm = gabor(5,45);
 gaborIm = real(gaborIm.SpatialKernel);
-gaborIm = gaborIm(10:50-1,35:75-1);
+gaborIm = gaborIm(20:60-1,30:70-1);
 
-K = imresize(gaborIm,1/4)*7;
+K = imresize(gaborIm,1/4)*20;
 
 gaborIm = gabor(10,150);
 gaborIm = real(gaborIm.SpatialKernel);
@@ -25,6 +25,13 @@ basisSet{1} = [-2.5;0;2.5];
 basisSet{2} = [4;4;4];
 
 nBases = size(basisSet{1},1);
+
+% alpha = zeros(R*nBases,1);
+% index = 1;
+% for rr=1:R
+%     alpha(index:index+nBases-1) = normrnd([1;-1;1],[1;1;1]);
+%     index = index+nBases;
+% end
 
 alpha = normrnd(0.5,2,[R*nBases,1]);
 
@@ -61,7 +68,7 @@ Y = poissrnd(Y); % add poisson spiking variability
 
 logLike = -Inf;
 
-for ii=1:10
+for ii=1:5
     [kest,alphaest,loglike] = FitLNP(Y(1:trainM),X(1:trainM,:),2); % estimate parameters of the model
     
     if loglike>logLike
